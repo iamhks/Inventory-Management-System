@@ -1,4 +1,3 @@
-Incase you're not able to view the images [click here](https://github.com/iamhks/projects/blob/master/Inventory%20Management%20System/readme.md)
 # Inventory Management System
 
 The aim of the project was to make a Database for Chain Of Stores to manage their Inventory by tracking the Items present and maintaining the transactions for all the items between warehouses to branch and warehouse to warehouse. 
@@ -29,109 +28,32 @@ This contains the details of the supplier who is supplying the items to the ware
 ## Flow of Process 
 The items are distributed to various Branches by various Warehouses,Main Inventory of Each branch is managed by a manager, the items are ordered by customers, they are imported and if any product is expired they are returned back to the company , If an order is valid the transaction is carried out by either cash or Card.
 
-![ER Diagram](https://github.com/iamhks/projects/blob/master/Inventory%20Management%20System/ER.jpg)
-![Schema](https://github.com/iamhks/projects/blob/master/Inventory%20Management%20System/Schema.jpg)
-![Entities@Attributes](https://github.com/iamhks/projects/blob/master/Inventory%20Management%20System/Entity%26Attributes.jpg)
+<img src="ER.jpg">
+<img src="Schema.jpg">
+<img src="Entity%26Attributes.jpg">
 
 ## CREATION AND INSERTION OF TABLES MENTIONED ABOVE
 
-create table PRODUCTS(
-ITEMID VARCHAR(10),
-Itname VARCHAR(20),
-Company VARCHAR(20),
-costT INTEGER,
-warehousenum VARCHAR(10),
-PRIMARY KEY (ITEMID));
-create table warehouse(
-Itemid VARCHAR(10),
-quantity INTEGER,
-expirydate DATE,
-status VARCHAR(10),
-warehousenum VARCHAR(10),
-PRIMARY KEY (itemid);
-CREATE TABLE Maininventory(
-Managerid VARCHAR(10),
-mfirstname VARCHAR(20),
-mlastname VARCHAR(20),
-memailid VARCHAR(20),
-warehousenum VARCHAR(10),
-PRIMARY KEY (MANAGERID));
-CREATE TABLE EMPLOYEE(
-empid VARCHAR(10),
-efirstname VARCHAR(20),
-elastname VARCHAR(20),
-eemailid VARCHAR(20),
-warehousenum VARCHAR(10),
-managerid VARCHAR(10),
-PRIMARY KEY (empid),
-FOREIGN KEY (Managerid) REFERENCES Maininventory(Managerid));
-CREATE TABLE IMPORTEDBY(
-supplierid VARCHAR(10),
-sname VARCHAR(20),
-PRIMARY KEY (supplierid));
-CREATE TABLE SUPPLIER(
-supplierid VARCHAR(10),
-sphonenumber VARCHAR(10),
-FOREIGN KEY (supplierid) REFERENCES IMPORTEDBY(supplierid));
-CREATE TABLE IMPORTED(
-Itemid VARCHAR(10),
-quantity INTEGER,
-expirydate DATE,
-supplierid VARCHAR(10),
-FOREIGN KEY (supplierid) REFERENCES IMPORTEDBY(supplierid),
-FOREIGN KEY (ITEMID) REFERENCES PRODUCTS(ITEMID));
-CREATE TABLE VISITEDBY(
-customerid VARCHAR(10),
-CName  VARCHAR(20),
-cemailid VARCHAR(20),
-PRIMARY KEY (customerid));
-CREATE TABLE CUSTOMER(
-customerid VARCHAR(10),
-cphonenumber VARCHAR(10),
-FOREIGN KEY (customerid) REFERENCES VISITEDBY(customerid));
-CREATE TABLE ORDERER(
-orderid  VARCHAR(10),
-datee  date,        
-customerid VARCHAR(10),
-status VARCHAR(10),
-PRIMARY KEY (ORDERID),
-FOREIGN KEY (customerid) REFERENCES VISITEDBY(customerid));
-CREATE TABLE ITEMSORDERED(
-orderid  VARCHAR(10),
-quantity INTEGER,
-itemid   VARCHAR(10),
-PRIMARY KEY (ORDERID),
-FOREIGN KEY (ITEMID) REFERENCES PRODUCTS(ITEMID),
-FOREIGN KEY (orderid) REFERENCES ORDERER(orderid));
-CREATE TABLE TRANSACTIONS(
-orderid  VARCHAR(10),
-totalprice INTEGER,
-discountPERCENTAGE INTEGER,
-grossprice INTEGER,
-PAYMENTtype VARCHAR(10),
-PRIMARY KEY (ORDERID),
-FOREIGN KEY (orderid) REFERENCES ORDERER(orderid));
-CREATE TABLE CARD(
-orderid  VARCHAR(10),
-Cvv INTEGER,
-Cardname VARCHAR(20),
-Cardnumber INTEGER,
-cexpirydate INTEGER,
-PRIMARY KEY (ORDERID),
-FOREIGN KEY (orderid) REFERENCES ORDERER(orderid));
-create table eitems(
-supplierid VARCHAR(10),
-itemid   VARCHAR(10),
-quantity integer,
-FOREIGN KEY (ITEMID) REFERENCES PRODUCTS(ITEMID),
-FOREIGN KEY (supplierid) REFERENCES IMPORTEDBY(supplierid));
+create table PRODUCTS(ITEMID VARCHAR(10),Itname VARCHAR(20),Company VARCHAR(20),costT INTEGER,warehousenum VARCHAR(10),PRIMARY KEY (ITEMID)); <br>
+create table warehouse(Itemid VARCHAR(10),quantity INTEGER,expirydate DATE,status VARCHAR(10),warehousenum VARCHAR(10),PRIMARY KEY (itemid);<br>
+CREATE TABLE Maininventory(Managerid VARCHAR(10),mfirstname VARCHAR(20),mlastname VARCHAR(20),memailid VARCHAR(20),warehousenum VARCHAR(10),PRIMARY KEY (MANAGERID));<br>
+CREATE TABLE EMPLOYEE(empid VARCHAR(10),efirstname VARCHAR(20),elastname VARCHAR(20),eemailid VARCHAR(20),warehousenum VARCHAR(10),managerid VARCHAR(10),PRIMARY KEY (empid),FOREIGN KEY (Managerid) REFERENCES Maininventory(Managerid));<br>
+CREATE TABLE IMPORTEDBY(supplierid VARCHAR(10),sname VARCHAR(20),PRIMARY KEY (supplierid));CREATE TABLE SUPPLIER(supplierid VARCHAR(10),sphonenumber VARCHAR(10),FOREIGN KEY (supplierid) REFERENCES IMPORTEDBY(supplierid));<br>
+CREATE TABLE IMPORTED(Itemid VARCHAR(10),quantity INTEGER,expirydate DATE,supplierid VARCHAR(10),FOREIGN KEY (supplierid) REFERENCES IMPORTEDBY(supplierid),FOREIGN KEY (ITEMID) REFERENCES PRODUCTS(ITEMID));<br>
+CREATE TABLE VISITEDBY(customerid VARCHAR(10),CName  VARCHAR(20),cemailid VARCHAR(20),PRIMARY KEY (customerid));<br>
+CREATE TABLE CUSTOMER(customerid VARCHAR(10),cphonenumber VARCHAR(10),FOREIGN KEY (customerid) REFERENCES VISITEDBY(customerid));<br>
+CREATE TABLE ORDERER(orderid  VARCHAR(10),datee  date,customerid VARCHAR(10),status VARCHAR(10),PRIMARY KEY (ORDERID),FOREIGN KEY (customerid) REFERENCES VISITEDBY(customerid));<br>
+CREATE TABLE ITEMSORDERED(orderid  VARCHAR(10),quantity INTEGER,itemid   VARCHAR(10),PRIMARY KEY (ORDERID),FOREIGN KEY (ITEMID) REFERENCES PRODUCTS(ITEMID),FOREIGN KEY (orderid) REFERENCES ORDERER(orderid));<br>
+CREATE TABLE TRANSACTIONS(orderid  VARCHAR(10),totalprice INTEGER,discountPERCENTAGE INTEGER,grossprice INTEGER,PAYMENTtype VARCHAR(10),PRIMARY KEY (ORDERID),FOREIGN KEY (orderid) REFERENCES ORDERER(orderid));<br>
+CREATE TABLE CARD(orderid  VARCHAR(10),Cvv INTEGER,Cardname VARCHAR(20),Cardnumber INTEGER,cexpirydate INTEGER,PRIMARY KEY (ORDERID),FOREIGN KEY (orderid) REFERENCES ORDERER(orderid));<br>
+create table eitems(supplierid VARCHAR(10),itemid   VARCHAR(10),quantity integer,FOREIGN KEY (ITEMID) REFERENCES PRODUCTS(ITEMID),FOREIGN KEY (supplierid) REFERENCES IMPORTEDBY(supplierid));
 
 ## Output
-![Output-1](https://github.com/iamhks/projects/blob/master/Inventory%20Management%20System/Output%201.jpg)
-![Output-2](https://github.com/iamhks/projects/blob/master/Inventory%20Management%20System/Output%202.jpg)
+<img src="Output%201.jpg">
+<img src="Output%202.jpg">
 
 ## Values
-### RODUCTS
+### PRODUCTS
 ```
 INSERT INTO products VALUES(1,"Bread","Thomas",10,10);
 INSERT INTO products VALUES(2,"Noodles","Thomas",200,11);
@@ -237,4 +159,4 @@ INSERT INTO card VALUES('O5',212,'George',05005792,822);
 INSERT INTO card VALUES('O6',213,'Kramer',06008943,923);
 ```
 ## Final Output 
-![All the Tables in Database](https://github.com/iamhks/projects/blob/master/Inventory%20Management%20System/Output%203.jpg)
+<img src="Output%203.jpg">
