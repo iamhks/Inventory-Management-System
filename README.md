@@ -1,3 +1,4 @@
+Incase you're now able to view the images [click here](https://github.com/iamhks/projects/blob/master/IMS.md)
 # Inventory Management System
 
 The aim of the project was to make a Database for Chain Of Stores to manage their Inventory by tracking the Items present and maintaining the transactions for all the items between warehouses to branch and warehouse to warehouse. 
