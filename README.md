@@ -2,7 +2,7 @@
 
 The aim of the project was to make a Database for Chain Of Stores to manage their Inventory by tracking the Items present and maintaining the transactions for all the items between warehouses to branch and warehouse to warehouse. 
 
-# Assumptions
+## Assumptions
 
 ### Main Inventory 
 From Here one can access the data from all the warehouses and have he count of all the items present
