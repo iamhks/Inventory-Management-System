@@ -5,7 +5,7 @@ The aim of the project was to make a Database for Chain Of Stores to manage thei
 ## Assumptions
 
 ### Main Inventory 
-From Here one can access the data from all the warehouses and have he count of all the items present
+From Here one can access the data from all the warehouses and have the count of all the items present
 ### Warehouse 
 Each warehouse contains some specific products in some specific Quantity which can be ordered by customer 
 ### Customers 
