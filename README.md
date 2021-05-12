@@ -1,6 +1,6 @@
 # Inventory Management System
 
-The aim of the project was to make a Database for Chain Of Stores to manage their Inventory by tracking the Items present and maintaining the transactions for all the items between warehouses to branch and warehouse to warehouse. 
+The aim of the project was to make a Database for Chain of Stores to manage their inventory by tracking the items present and maintaining the transactions for all the items between warehouses to branch and warehouse to warehouse. 
 
 ## Assumptions
 
